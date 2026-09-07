@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#183E35" />
+    <link rel="manifest" href="manifest.json" />
+    <title>ТурВайб — базы с настроением</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="searchView" class="view active">
+        <header class="hero">
+          <div class="brand-row"><span class="logo-mark">✦</span><span class="brand">ТурВайб</span><button class="profile" aria-label="Профиль">☻</button></div>
+          <p class="eyebrow">ВЫХОДНЫЕ ЗА ГОРОДОМ</p>
+          <h1>Найдите место<br /><em>под ваше настроение</em></h1>
+          <p class="hero-copy">Сравним цены, атмосферу и всё, что действительно важно.</p>
+        </header>
+
+        <section class="search-card" aria-label="Параметры поиска">
+          <label class="field-label">Когда едем?</label>
+          <div class="date-fields">
+            <label><span>Заезд</span><input id="checkIn" type="date" value="2026-09-15" /></label>
+            <span class="date-arrow">→</span>
+            <label><span>Выезд</span><input id="checkOut" type="date" value="2026-09-18" /></label>
+          </div>
+          <div class="divider"></div>
+          <div class="guest-row"><div><span class="field-label">Гости</span><span id="guestSummary" class="guest-summary">2 взрослых, без детей</span></div><button id="guestButton" class="guest-button" aria-expanded="false">Изменить</button></div>
+          <div id="guestPopover" class="guest-popover" hidden>
+            <div class="counter"><span>Взрослые</span><div><button data-counter="adults" data-step="-1">−</button><b id="adultsValue">2</b><button data-counter="adults" data-step="1">+</button></div></div>
+            <div class="counter"><span>Дети</span><div><button data-counter="children" data-step="-1">−</button><b id="childrenValue">0</b><button data-counter="children" data-step="1">+</button></div></div>
+          </div>
+        </section>
+
+        <section class="filters">
+          <div class="section-top"><div><p class="eyebrow">ВАШ БЮДЖЕТ</p><h2>до <span id="budgetValue">90 000</span> ₸ <small>за всё</small></h2></div><span id="nightCount" class="nights">3 ночи</span></div>
+          <input id="budgetRange" class="budget-range" type="range" min="15000" max="180000" step="5000" value="90000" />
+          <div class="budget-labels"><span>15 000 ₸</span><span>180 000 ₸</span></div>
+          <p class="eyebrow preference-label">ВАЖНО ДЛЯ ВАС</p>
+          <div id="tagFilters" class="tag-filters"></div>
+        </section>
+
+        <section class="results-section">
+          <div class="results-heading"><div><h2 id="resultTitle">Подходящие варианты</h2><p id="resultCount">Ищем лучшие места для вас</p></div><button id="sortButton" class="sort-button">⇅ Цена</button></div>
+          <div id="hotelList" class="hotel-list"></div>
+        </section>
+      </section>
+
+      <section id="compareView" class="view compare-view">
+        <header class="compare-header"><button id="backButton" class="back-button">←</button><div><p class="eyebrow">БАТТЛ БАЗ</p><h2>Кто ваш фаворит?</h2></div><button id="clearButton" class="clear-button">Очистить</button></header>
+        <div id="compareContent"></div>
+      </section>
+
+      <div id="compareBar" class="compare-bar" hidden><div class="compare-avatars" id="compareAvatars"></div><div><strong id="compareBarTitle">Сравнить варианты</strong><span id="compareBarText"></span></div><button id="compareButton">Сравнить <span>→</span></button></div>
+      <div id="toast" class="toast" role="status"></div>
+    </main>
+    <script src="app.js"></script>
+    <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');</script>
+  </body>
+</html>
