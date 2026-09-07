@@ -1,0 +1,9 @@
+{
+  "name": "ТурВайб — базы с настроением",
+  "short_name": "ТурВайб",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f8f5ed",
+  "theme_color": "#183e35",
+  "description": "Умный поиск и сравнение баз отдыха"
+}
